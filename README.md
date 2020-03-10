@@ -6,13 +6,14 @@ Nowaday, life can be challenging and fast moving. In the city where all the busi
  
 Below will be a few steps  of how to use the app:
  
-App will greet whenever a user touches the screen . “Hi, Welcome to Dragon King takeaway North Sydney”
-“Please press the option below:”
-Main menu, Drink menu 
- Users can loop through the food and press what number to order. 
-Users can also press “ check out “ after order or go back to “main menu “ to order some more.
-After the user chooses to check out, the app will calculate how much users need to pay , and lead them through the payment app.
-“Thank you for your order. See you next time “ will be provided by the end of the order.
+1.App will greet whenever a user touches the screen .For example: “Hi, Welcome to Dragon King takeaway North Sydney”
+2.Main menu, Drink menu will appear
+3.Users can loop through the food and press what number to order.
+4.User can input their food and drink number in the tab provide
+5.After decision made, user can choose "check out" or return to "menu" or "cancel order" 
+6.IF "check out " has been decided, total price will be calculated and ask the user choose what payment they like. 
+7.“Thank you for your order. See you next time “ will be provided by the end of the order.
+8.App will return to menu when all decision have made.
 
 
 
