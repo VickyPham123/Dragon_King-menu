@@ -24,6 +24,10 @@ Below will be a few steps  of how to use the app:
 
 8.App will return to menu when all decision have made.
 
+# Flow Diagram
+
+[logo] https://github.com/VickyPham123/dragon-king-menu/raw/master/dragon-king-menu.png
+
 
 # Features
 
@@ -41,7 +45,9 @@ User will be asked if he/she wants to have a drink with it?
 ## Feature 4 - Check out
 App will ask user if they want to check out. If Yes, the total food price will be calculated and show to user with their food names and price. If No, app will ask user if user still wants to continue with the process? User will be able to cancel the transaction if user change his min and don't want to order anymore or continue to pay for the total price. A "Thank you" comment will appear after the payment sucess.
 
+# Outline
 
+## How user does something...
 
 
 
