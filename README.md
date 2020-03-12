@@ -26,7 +26,7 @@ Below will be a few steps  of how to use the app:
 
 # Flow Diagram
 
-[logo] https://github.com/VickyPham123/dragon-king-menu/raw/master/dragon-king-menu.png
+[logo] (docs/dragon-king-menu.png)
 
 
 # Features
