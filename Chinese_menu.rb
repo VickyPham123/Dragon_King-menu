@@ -1,70 +1,69 @@
 
+require 'tty-prompt'
 
-puts " "
+order_in_progress = true
+
 food_menu = [
-    {:name => "Black bean beef with egg noodle",
-    :price => 18.00,
-    :ingredient =>" Beef, black bean sause, peanut oil, egg noodle"
-    },
+  {:name => "Black bean beef with egg noodle",
+  :price => 18.00,
+  :ingredient =>" Beef, black bean sause, peanut oil, egg noodle"
+  },
 
-    {:name => "Mix seafood with flat rice noodle",
-        :price => 24.00,
-        :ingredient =>" Prawn, squid, fish, sunflower oil, rice noodle"
-    },
- 
-    {:name => "Lobster on crispy egg noodle",
-     :price => 28.50,
-     :ingredient =>" Lobster meat, deep fried egg noodle, spring onion, coriander, tarima sause"
-    },
+  {:name => "Mix seafood with flat rice noodle",
+      :price => 24.00,
+      :ingredient =>" Prawn, squid, fish, sunflower oil, rice noodle"
+  },
 
-    {:name => "Sweet and sour pork on coconut rice",
-     :price => 18.50,
-     :ingredient =>"Flour, pork, sugar , sunflower oil, coconut rice and capsicum"
-    },
+  {:name => "Lobster on crispy egg noodle",
+  :price => 28.50,
+  :ingredient =>" Lobster meat, deep fried egg noodle, spring onion, coriander, tarima sause"
+  },
 
-    {:name => "Grill baramandi with hand-made clear potatoes stir-fried noodle",
-     :price => 21.50,
-     :ingredient =>"Baramandi fish, ginger, spring onion, butter, peper, hand-made potatoes noodle"
-    },
+  {:name => "Sweet and sour pork on coconut rice",
+  :price => 18.50,
+  :ingredient =>"Flour, pork, sugar , sunflower oil, coconut rice and capsicum"
+  },
 
-    {:name => "Deep fried sweet potatoes chip and stir-fried mix vegtable",
-     :price => 15.99,
-     :ingredient =>"Sweet potatoes, porkchoy, driedn onion, capsicum, baby tomatoes"
-    },
+  {:name => "Grill baramandi with hand-made clear potatoes stir-fried noodle",
+  :price => 21.50,
+  :ingredient =>"Baramandi fish, ginger, spring onion, butter, peper, hand-made potatoes noodle"
+  },
 
-    {:name => "Hot and sour crab soup",
-     :price => 10.99,
-     :ingredient => "Crab with sugar, vinegar, in chicken stock with corn flour"
-    },
+  {:name => "Deep fried sweet potatoes chip and stir-fried mix vegtable",
+  :price => 15.99,
+  :ingredient =>"Sweet potatoes, porkchoy, driedn onion, capsicum, baby tomatoes"
+  },
+
+  {:name => "Hot and sour crab soup",
+  :price => 10.99,
+  :ingredient => "Crab with sugar, vinegar, in chicken stock with corn flour"
+  },
 ]
 
 
 drink_menu = [
-    {:name => "Coke",
-     :price => 4.50,
-    },
+  {:name => "Coke",
+  :price => 4.50,
+  },
 
-    {:name => "Diet-Coke",
-     :price => 4.50,
-    },
+  {:name => "Diet-Coke",
+  :price => 4.50,
+  },
 
-    {:name => "Orange juice",
-     :price => 6.50,
-    },
+  {:name => "Orange juice",
+  :price => 6.50,
+  },
 
-    {:name => "Apple juice",
-      :price => 6.50,
-    },
+  {:name => "Apple juice",
+  :price => 6.50,
+  },
 
-    {:name => "Water",
-     :price => 3.50,
-    },
+  {:name => "Water",
+  :price => 3.50,
+  },
 
 
 ]
-require 'tty-prompt'
-
-order_in_progress = true
 
 #####
 
@@ -157,7 +156,55 @@ while order_in_progress == true
     puts " "
     puts " Your total price is : " + "$"+ total.round(2).to_s
     puts " " 
-    order_in_progress = false 
+
+
+    # Show paymet options
+    outstanding_amount = total
+    while outstanding_amount > 0
+
+      prompt = TTY::Prompt.new
+      payment_choice = prompt.select("What is your preferred payment method?", ["Credit Card","Cash","Exit"])
+
+      if payment_choice == "Credit Card"
+        
+        puts ""
+        print "Please enter your 12 digit card number: "
+        card_number = gets.chomp
+
+        puts ""
+        print "Please enter your card expiry date : "
+        card_expiry = gets.chomp 
+
+        puts ""
+        print "Please enter your 3 digit card number at the back : "
+        card_cvc = gets.chomp
+
+        print "Your current balance is #{outstanding_amount}, How much would you like to pay from your card: "
+        card_in = gets.chomp.to_f.round(2)
+        outstanding_amount -= card_in
+      
+      end
+      
+
+      if payment_choice == "Cash"
+        print "Your current balance is #{outstanding_amount}, How much would you like to pay in cash: "
+        cash_in = gets.chomp.to_f.round(2)
+        outstanding_amount -= cash_in
+      end
+
+
+      if payment_choice == "Exit"
+        outstanding_amount = 0
+      end
+
+    end
+
+    puts ""
+    puts "Thank you for your order! outstanding amount = #{outstanding_amount}"
+    order_in_progress = false
+
+
+
   end
   
   if menu_choice == "Exit"
