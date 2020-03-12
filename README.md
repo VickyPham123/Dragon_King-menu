@@ -49,6 +49,16 @@ App will ask user if they want to check out. If Yes, the total food price will b
 
 ## How user does something...
 
+Terminal app can be very straight forward with all the layout question and awaiting for user to input their decision. 
+
+User only need to press number from 0 to 7 to order their food. 
+
+Food menu and drink menu will give enough information for user to decide what item he should pick
+
+If User input the wrong number , there will be an error which lead them to the prompt of wrong information has put in. 
+
+User also can change their decision of not buying the item , cancel the transaction before pay which app terminal will turn back to the exit door and system will turn back to the menu display.
+
 
 
 
