@@ -45,24 +45,16 @@ User will be asked if he/she wants to have a drink with it?
 ## Feature 4 - Check out
 App will ask user if they want to check out. If Yes, the total food price will be calculated and show to user with their food names and price. If No, app will ask user if user still wants to continue with the process? User will be able to cancel the transaction if user change his min and don't want to order anymore or continue to pay for the total price. A "Thank you" comment will appear after the payment sucess.
 
-# Outline
+# Implementation Plan
 
-## How user does something...
-
-Terminal app can be very straight forward with all the layout question and awaiting for user to input their decision. 
-
-User only need to press number from 0 to 7 to order their food. 
-
-Food menu and drink menu will give enough information for user to decide what item he should pick
-
-If User input the wrong number , there will be an error which lead them to the prompt of wrong information has put in. 
-
-User also can change their decision of not buying the item , cancel the transaction before pay which app terminal will turn back to the exit door and system will turn back to the menu display.
+https://github.com/users/VickyPham123/projects/1
 
 
+# Installation Instructions
 
-
-
-
-
-
+1. Install Ruby (https://www.ruby-lang.org/en/documentation/installation)
+2.  Clone repository from https://github.com/VickyPham123/dragon-king-menu
+3. Go to ./dragon-king-menu
+4. Run "ruby Chinese_menu.rb"
+5. Select either food or drinks from the menu
+6. Checkout and pay using credit card or cash (Multiple supported)
