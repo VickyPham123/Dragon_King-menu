@@ -203,10 +203,18 @@ while order_in_progress == true
         print "Please enter your card expiry date : "
         card_expiry = gets.chomp 
 
-        puts ""
-        print "Please enter your 3 digit card number at the back : "
-        card_cvc = gets.chomp
+        valid_credit_card_cvc = false
+        while valid_credit_card_cvc == false
+          puts ""
+          print "Please enter your 3 digit card number at the back : "
+          card_cvc = gets.chomp
+          
+          if card_cvc.to_s.length == 3
+            valid_credit_card_cvc = true
+          end
+        end
 
+        
         print "Your current balance is #{outstanding_amount}, How much would you like to pay from your card: "
         card_in = gets.chomp.to_f.round(2)
         outstanding_amount -= card_in
