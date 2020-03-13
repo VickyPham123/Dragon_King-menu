@@ -1,15 +1,24 @@
 
 require 'tty-prompt'
+require 'emoji'
+require "artii"
+require "tty-box"
+
+index = Emoji::Index.new
+
+heart_moji = index.find_by_name('heart')
+
+heart = heart_moji['moji']
 
 order_in_progress = true
 
-food_menu = [
-  {:name => "Black bean beef with egg noodle",
+food_menu =[
+  {:name => "Black bean beef with egg noodle", 
   :price => 18.00,
   :ingredient =>" Beef, black bean sause, peanut oil, egg noodle"
   },
 
-  {:name => "Mix seafood with flat rice noodle",
+  {:name => "Mix seafood with flat rice noodle #{heart}",
       :price => 24.00,
       :ingredient =>" Prawn, squid, fish, sunflower oil, rice noodle"
   },
@@ -70,9 +79,16 @@ drink_menu = [
 food_price = []
 drink_price = []
 
+
+a = Artii::Base.new :font => 'slant'
+puts "================================"
+puts a.asciify('DRAGON KING TAKEAWAY')
+puts "================================"
+
 while order_in_progress == true
 
   prompt = TTY::Prompt.new
+
   menu_choice = prompt.select("What Menu would you like?", ["Food Menu","Drink Menu", "Checkout","Exit"])
 
   if menu_choice == "Food Menu"
@@ -93,7 +109,7 @@ while order_in_progress == true
       
       customer_input = -1
       while customer_input < 0 || customer_input > food_menu.length-1
-        print "What would you like to order?"
+        print TTY::Box.frame "What would you like to order? "
         customer_input = gets.chomp.to_i
       end
       puts " "
@@ -101,7 +117,7 @@ while order_in_progress == true
       food_price.push(food_menu[customer_input][:price])
       puts " "
 
-      puts " Would you like anything else? "
+      print TTY::Box.frame " Would you like anything else? "
       puts " "
       add_food = gets.chomp
       
@@ -167,9 +183,21 @@ while order_in_progress == true
 
       if payment_choice == "Credit Card"
         
-        puts ""
-        print "Please enter your 12 digit card number: "
-        card_number = gets.chomp
+        valid_credit_card_num = false;
+
+        while valid_credit_card_num == false
+
+
+
+          puts ""
+          print "Please enter your 12 digit card number: "
+          card_number = gets.chomp
+
+          if card_number.to_s.length == 12
+            valid_credit_card_num = true
+          end
+
+        end
 
         puts ""
         print "Please enter your card expiry date : "
@@ -200,7 +228,8 @@ while order_in_progress == true
     end
 
     puts ""
-    puts "Thank you for your order! outstanding amount = #{outstanding_amount}"
+
+    print TTY::Box.frame "Thank you for your order!", "outstanding amount #{outstanding_amount}", "See you next time"
     order_in_progress = false
 
 
